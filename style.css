@@ -1,0 +1,342 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.6;
+}
+header {
+  background-color: rgba(0, 0, 0, 0.658);
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+header img {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  opacity: 0.6;
+  object-fit: cover;
+}
+header h1 {
+  color: rgb(253, 253, 253);
+  text-align: center;
+  font-size: 150px;
+}
+header h1 span {
+  color: blue;
+  font-size: 150px;
+}
+#introduction {
+  padding-top: 100px;
+  display: flex;
+  height: 100vh; /* view height */
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+/* Left box */
+#introduction .left {
+  flex: 1;
+  background-color: #f0f0f0; /* light gray */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  margin: 50px;
+}
+#introduction .left p {
+  font-size: 20px;
+  text-align: left;
+  color: #666;
+  margin-bottom: 20px;
+}
+#introduction .left span {
+  font-size: 40px;
+  color: #333;
+  line-height: 1.5;
+}
+/* Right box */
+#introduction .right {
+  flex: 1;
+  background-color: #ddd; /* slightly darker */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+/* Image styling */
+#introduction .right img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Card */
+.card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  width: 280px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  color: #2c3e50;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+}
+
+.code-snippet {
+  width: 100%;
+  height: 160px;
+  background: #1e1e1e;
+  color: #00ff88;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: monospace;
+  font-size: 13px;
+  overflow-y: auto;
+  border: none;
+  resize: none;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.button-group button,
+.editor-link {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.button-group button:hover,
+.editor-link:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+  background: white;
+  margin: auto;
+  padding: 25px;
+  border-radius: 12px;
+  width: 60%;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+
+/* Lightbox overlay */
+#lightbox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    max-height: 80%;
+    display: none;
+    z-index: 1000;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+#lightbox img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* Lightbox background overlay */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 999;
+}
+/* ====== RESPONSIVE DESIGN ====== */
+@media (max-width: 1200px) {
+  header h1 {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 992px) {
+  header h1 {
+    font-size: 70px;
+  }
+
+  #introduction {
+    flex-direction: column;
+    padding: 50px 20px;
+  }
+
+  #introduction .left, 
+  #introduction .right {
+    margin: 1px 0;
+  }
+
+  .cards-container {
+    margin-top: 65px;
+    padding: 30px 15px;
+  }
+
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 50px;
+  }
+
+  #introduction .left span {
+    font-size: 26px;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .code-snippet {
+    height: 140px;
+  }
+
+  footer {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  header{
+    height: 78vh;
+    justify-content: start;
+  }
+
+  header h1 {
+    font-size: 36px;
+    padding-top: 156px;
+  }
+
+  header h1 span{
+    font-size: 42px;
+  }
+
+  #introduction {
+    padding: 40px 15px;
+  }
+
+  #introduction .left span {
+    font-size: 21px;
+  }
+
+  #introduction .left p {
+    font-size: 16px;
+  }
+
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 10px;
+  }
+}

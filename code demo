@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    printf("Start\n");
+
+    goto skip;  // Jump to the label 'skip'
+
+    // This line will be skipped because of the goto statement
+    printf("This line will be skipped.\n");
+
+skip:
+    printf("You jumped here!\n");
+
+    return 0;
+}
